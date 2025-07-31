@@ -1,0 +1,127 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <!--                                   -->
+  <!--                                   -->
+  <!-- BREADCRUMBS AND LANGUAGE SELECTOR -->
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper govuk-!-padding-top-0 govuk-!-padding-bottom-0" style="margin-top:-15px;margin-bottom:-15px">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+          <a href="javascript:history.back()" class="govuk-back-link" style="color:#0b0c0c;text-decoration: none;margin-top:0">Back</a>
+        </div>
+        <div class="govuk-grid-column-one-half" style="text-align: right;">
+          <span class="govuk-body-s">English</span> | <a href="#" class="govuk-link" style="color:#0b0c0c">Cymraeg</a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!--              -->
+  <!--              -->
+  <!-- MAIN CONTENT -->
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper">
+
+      <!--             -->
+      <!--             -->
+      <!-- TOP SECTION -->
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <span class="govuk-caption-l">[Name of Buyer Organisation]</span>
+          <h1 class="govuk-heading-l">Uploading</h1>
+        </div>
+      </div>
+
+      <!--                  -->
+      <!--                  -->
+      <!-- Uploading status -->
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+
+
+
+
+            <style>
+              .meter { 
+                  height: 10px;
+                  position: relative;
+                  background: #f3f2f1;
+                  overflow: hidden;
+              }
+              
+              .meter span {
+                  display: block;
+                  height: 100%;
+              }
+              
+              .progress {
+                  background-color: #1d70b8;
+                  animation: progressBar 5s ease-in-out;
+                  animation-fill-mode:both; 
+              }
+              
+              @keyframes progressBar {
+                0% { width: 0; }
+                100% { width: 100%; }
+              }
+            </style> 
+
+            <div class="meter">
+              <span style="width:100%;"><span class="progress"></span></span>
+            </div>
+          
+
+            <style>
+              .loading-text::before {
+                  content: "3";
+                  animation: animate 5s;
+                  padding-left: 10px;
+              }
+              .success::before {
+                animation: animate2 5s;
+              }
+              @keyframes animate {
+                0% {
+                    content: "0";
+                }
+
+                33% {
+                    content: "1";
+                }
+
+                66% {
+                    content: "2";
+                }
+                100% {}
+              }
+            </style>
+
+            <span class="loading-text govuk-caption-xl" style="text-align: center; padding-top:15px; padding-bottom:30px"> of 3 records prepared...</span>
+
+            <script>
+              var timer = setTimeout(function() {
+                  window.location='upload-summary'
+              }, 5000);
+            </script>
+
+
+
+
+
+
+
+        </div>
+      </div>
+
+
+    </main>
+  </div>
+
+{% endblock %}

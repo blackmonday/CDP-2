@@ -1,0 +1,135 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <!--                                   -->
+  <!--                                   -->
+  <!-- BREADCRUMBS AND LANGUAGE SELECTOR -->
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper govuk-!-padding-top-0 govuk-!-padding-bottom-0" style="margin-top:-15px;margin-bottom:-15px">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+          <a href="javascript:history.back()" class="govuk-back-link" style="color:#0b0c0c;text-decoration: none;margin-top:0">Back</a>
+        </div>
+        <div class="govuk-grid-column-one-half" style="text-align: right;">
+          <span class="govuk-body-s">English</span> | <a href="#" class="govuk-link" style="color:#0b0c0c">Cymraeg</a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!--              -->
+  <!--              -->
+  <!-- MAIN CONTENT -->
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper">
+
+      <!--             -->
+      <!--             -->
+      <!-- TOP SECTION -->
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <span class="govuk-caption-l">[Name of Buyer Organisation]</span>
+          <h1 class="govuk-heading-l">Upload complete</h1>
+        </div>
+      </div>
+
+      <!--                                    -->
+      <!--                                    -->
+      <!-- CONFIRMATION - ALL RECORD UPLOADED -->
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+
+          <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title" style="margin-bottom:15px">
+              3
+            </h1>
+            <div class="govuk-panel__body">
+              payment records were uploaded
+            </div>
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible" style="border-bottom:1px solid #ffffff;padding-top:15px">
+            <a href="#" class="govuk-body" style="color: var(--govuk-colour-white)">Click here to download successful payment records for storing offline</a>
+          </div>
+
+          <a href="your-payments" type="submit" class="govuk-button" data-module="govuk-button" style="float:right">
+            View payments
+          </a>
+
+        </div>
+      </div>
+
+      <!--                                   -->
+      <!--                                   -->
+      <!-- CONFIRMATION - SOME RECORD FAILED -->
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+
+          <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title" style="margin-bottom:15px">
+              1
+            </h1>
+            <div class="govuk-panel__body">
+              payment record was uploaded successfully
+            </div>
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible" style="border-bottom:1px solid #ffffff;padding-top:15px">
+            <a href="#" class="govuk-body" style="color: var(--govuk-colour-white)">Download records to your device</a>
+          </div>
+
+          <a href="your-payments" type="submit" class="govuk-button" data-module="govuk-button" style="float:right">
+            View payments
+          </a>
+
+        </div>
+
+        <div class="govuk-grid-column-one-half">
+
+          <div class="govuk-panel govuk-panel--confirmation" style="background-color:#d4351c">
+            <h1 class="govuk-panel__title" style="margin-bottom:15px">
+              2
+            </h1>
+            <div class="govuk-panel__body">
+              payment record were not uploaded
+            </div>
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible" style="border-bottom:1px solid #ffffff;padding-top:15px">
+            <a href="#" class="govuk-body" style="color: var(--govuk-colour-white)">Download records that were not uploaded</a>
+          </div>
+
+         <a href="upload-your-payments.html" type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button" style="float:right">
+            Upload again
+         </a>
+
+        </div>
+
+      </div>
+
+      <!--                                      -->
+      <!--                                      -->
+      <!-- CONFIRMATION - PROBLEM WITH SERVICE  -->
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+
+          <div class="govuk-panel govuk-panel--confirmation" style="background-color:#d4351c">
+            <div class="govuk-panel__body">
+              No payment records were uploaded
+            </div>
+            </h1>
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible" style="border-bottom:1px solid #ffffff;padding-top:15px">
+            <p class="govuk-body" style="color: var(--govuk-colour-white)">This is because of a problem with our service</p>
+          </div>
+
+          <a href="upload-your-payments.html" type="submit" class="govuk-button" data-module="govuk-button" style="float:right">
+            Upload again
+          </a>
+
+        </div>
+      </div>
+
+
+    </main>
+  </div>
+
+{% endblock %}
