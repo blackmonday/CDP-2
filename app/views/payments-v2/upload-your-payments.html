@@ -1,0 +1,70 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <!--                                   -->
+  <!--                                   -->
+  <!-- BREADCRUMBS AND LANGUAGE SELECTOR -->
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper govuk-!-padding-top-0 govuk-!-padding-bottom-0" style="margin-top:-15px;margin-bottom:-15px">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+          <a href="javascript:history.back()" class="govuk-back-link" style="color:#0b0c0c;text-decoration: none;margin-top:0">Back</a>
+        </div>
+        <div class="govuk-grid-column-one-half" style="text-align: right;">
+          <span class="govuk-body-s">English</span> | <a href="#" class="govuk-link" style="color:#0b0c0c">Cymraeg</a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!--              -->
+  <!--              -->
+  <!-- MAIN CONTENT -->
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper">
+
+      <!--             -->
+      <!--             -->
+      <!-- TOP SECTION -->
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-l">Upload your payments</h1>
+          <p class="govuk-body">You need to download the <a href="#">Excel spreadsheet template</a> and enter your payment records before uploading.</p>
+        </div>
+      </div>
+
+      <!--             -->
+      <!--             -->
+      <!-- FILE UPLOAD -->
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="file-upload-1">
+              Upload a file
+            </label>
+            <div
+              class="govuk-drop-zone"
+              data-module="govuk-file-upload">
+              <input class="govuk-file-upload" id="file-upload-1" name="fileUpload1" type="file">
+            </div>
+          </div>
+
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Upload file
+          </button>
+
+        </div>
+      </div>
+
+      
+
+    </main>
+  </div>
+
+{% endblock %}

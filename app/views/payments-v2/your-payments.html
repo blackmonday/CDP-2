@@ -1,0 +1,244 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <!--                                   -->
+  <!--                                   -->
+  <!-- BREADCRUMBS AND LANGUAGE SELECTOR -->
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper govuk-!-padding-top-0 govuk-!-padding-bottom-0" style="margin-top:-15px;margin-bottom:-15px">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+          <a href="javascript:history.back()" class="govuk-back-link" style="color:#0b0c0c;text-decoration: none;margin-top:0">Back</a>
+        </div>
+        <div class="govuk-grid-column-one-half" style="text-align: right;">
+          <span class="govuk-body-s">English</span> | <a href="#" class="govuk-link" style="color:#0b0c0c">Cymraeg</a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!--              -->
+  <!--              -->
+  <!-- MAIN CONTENT -->
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper">
+
+      <!--             -->
+      <!--             -->
+      <!-- TOP SECTION -->
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-l">Your payments</h1>
+          <p class="govuk-body">Content coming soon!</p>
+          {{ govukInsetText({
+            text: "Showing all 357 records"
+          }) }}
+        </div>
+      </div>
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <div class="govuk-button-group" style="float:right">
+            <a href="#" class="govuk-link">Download template</a>
+            <a href="upload-your-payments" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+              Upload payments
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!--        -->
+      <!--        -->
+      <!-- FILTERS-->
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+
+          <p class="govuk-body govuk-!-font-weight-bold" style="float:left">
+            <span style="display:none">▼</span>▶ Filters
+          </p>
+
+          <p class="govuk-body" style="float:right">
+            <span class="govuk-!-font-weight-bold">View as list</span> | <a href="#">View as grid</a>
+          </p>
+
+        </div>
+      </div>
+
+      <!--           -->
+      <!--           -->
+      <!-- LIST VIEW -->
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+
+          <script defer>
+            document.addEventListener("DOMContentLoaded", function () {
+              const table = document.querySelector("table");
+              const headers = table.querySelectorAll("th");
+              let sortColumnIndex = 4; // Default sort by 'Date Created'
+              let sortAscending = true;
+
+              function updateIcons() {
+                headers.forEach((header, idx) => {
+                  const iconSpan = header.querySelector(".sort-icon");
+                  if (idx === sortColumnIndex) {
+                    iconSpan.textContent = sortAscending ? "▲" : "▼";
+                  } else {
+                    iconSpan.textContent = "⇅";
+                  }
+                });
+              }
+
+              function sortTable(index, ascending) {
+                const rows = Array.from(table.querySelectorAll("tbody tr"));
+                rows.sort((a, b) => {
+                  const cellA = a.children[index].innerText.trim().toLowerCase();
+                  const cellB = b.children[index].innerText.trim().toLowerCase();
+                  return ascending ? cellA.localeCompare(cellB) : cellB.localeCompare(cellA);
+                });
+
+                const tbody = table.querySelector("tbody");
+                rows.forEach(row => tbody.appendChild(row));
+              }
+
+              headers.forEach((header, index) => {
+                header.addEventListener("click", () => {
+                  if (sortColumnIndex === index) {
+                    sortAscending = !sortAscending;
+                  } else {
+                    sortColumnIndex = index;
+                    sortAscending = true;
+                  }
+                  sortTable(sortColumnIndex, sortAscending);
+                  updateIcons();
+                });
+              });
+
+              // Initial sort
+              sortTable(sortColumnIndex, sortAscending);
+              updateIcons();
+            });
+          </script>
+          <style>
+            th { cursor: pointer; white-space: nowrap; }
+            .sort-icon {
+              margin-left: 0.3em;
+              font-size: 0.8em;
+              color: #505a5f;
+            }
+          </style>
+          <!--<h1 class="govuk-heading-l">Sortable Table</h1>-->
+          <table class="govuk-table">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header" style="max-width:155px">
+                  <a href="#" class="govuk-body-s govuk-!-font-weight-bold govuk-link">Procurement<br>identifier<br>(OCID)</a> <span class="sort-icon">⇅</span></a>
+                </th>
+                <th scope="col" class="govuk-table__header" style="max-width:100px">
+                  <a href="#" class="govuk-body-s govuk-!-font-weight-bold govuk-link">Contract<br>number<span class="sort-icon">⇅</span></a>
+                </th>
+                <th scope="col" class="govuk-table__header" style="max-width:120px">
+                  <a href="#" class="govuk-body-s govuk-!-font-weight-bold govuk-link">Buyer PPON<span class="sort-icon">⇅</span></a>
+                </th>
+                <th scope="col" class="govuk-table__header" style="max-width:120px">
+                  <a href="#" class="govuk-body-s govuk-!-font-weight-bold govuk-link">Procurement<br>organsiation<br>PPON <span class="sort-icon">⇅</span></a>
+                </th>
+                <th scope="col" class="govuk-table__header" style="max-width:130px">
+                  <a href="#" class="govuk-body-s govuk-!-font-weight-bold govuk-link">Supplier PPON<span class="sort-icon">⇅</span></a>
+                </th>
+                <th scope="col" class="govuk-table__header" style="max-width:120px">
+                  <a href="#" class="govuk-body-s govuk-!-font-weight-bold govuk-link">Amount<span class="sort-icon">⇅</span></a>
+                </th>
+                <th scope="col" class="govuk-table__header" style="max-width:125px">
+                  <a href="#" class="govuk-body-s govuk-!-font-weight-bold govuk-link">Payment date<span class="sort-icon">⇅</span></a>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <td class="govuk-body-s govuk-table__cell"><a class="govuk-link" href="#">ocds-h6vhtk-05635a</a></td>
+                <td class="govuk-body-s govuk-table__cell">1</td>
+                <td class="govuk-body-s govuk-table__cell">PXXX-1234-XXXX</td>
+                <td class="govuk-body-s govuk-table__cell">PXXX-1234-XXXX</td>
+                <td class="govuk-body-s govuk-table__cell">PXXX-1234-XXXX</td>
+                <td class="govuk-body-s govuk-table__cell">£3,300,500.00</td>
+                <td class="govuk-body-s govuk-table__cell">24 Sept 2025</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-body-s govuk-table__cell"><a class="govuk-link" href="#">ocds-h6vhtk-05635a</a></td>
+                <td class="govuk-body-s govuk-table__cell">1</td>
+                <td class="govuk-body-s govuk-table__cell">PXXX-1234-XXXX</td>
+                <td class="govuk-body-s govuk-table__cell">PXXX-1234-XXXX</td>
+                <td class="govuk-body-s govuk-table__cell">PXXX-1234-XXXX</td>
+                <td class="govuk-body-s govuk-table__cell">£3,300,500.00</td>
+                <td class="govuk-body-s govuk-table__cell">24 Sept 2025</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-body-s govuk-table__cell"><a class="govuk-link" href="#">ocds-h6vhtk-05635a</a></td>
+                <td class="govuk-body-s govuk-table__cell">1</td>
+                <td class="govuk-body-s govuk-table__cell">PXXX-1234-XXXX</td>
+                <td class="govuk-body-s govuk-table__cell">PXXX-1234-XXXX</td>
+                <td class="govuk-body-s govuk-table__cell">PXXX-1234-XXXX</td>
+                <td class="govuk-body-s govuk-table__cell">£3,300,500.00</td>
+                <td class="govuk-body-s govuk-table__cell">24 Sept 2025</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+
+      <!-- PAGINATION -->
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <nav class="govuk-pagination" aria-label="Pagination">
+            <div class="govuk-pagination__prev">
+              <a class="govuk-link govuk-pagination__link" href="#" rel="prev">
+                <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                  <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
+                </svg>
+                <span class="govuk-pagination__link-title">
+                  Previous<span class="govuk-visually-hidden"> page</span>
+                </span>
+              </a>
+            </div>
+            <ul class="govuk-pagination__list">
+              <li class="govuk-pagination__item">
+                <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 1">
+                  1
+                </a>
+              </li>
+              <li class="govuk-pagination__item govuk-pagination__item--current">
+                <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 2" aria-current="page">
+                  2
+                </a>
+              </li>
+              <li class="govuk-pagination__item">
+                <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 3">
+                  3
+                </a>
+              </li>
+            </ul>
+            <div class="govuk-pagination__next">
+              <a class="govuk-link govuk-pagination__link" href="#" rel="next">
+                <span class="govuk-pagination__link-title">
+                  Next<span class="govuk-visually-hidden"> page</span>
+                </span>
+                <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                  <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+                </svg>
+              </a>
+            </div>
+          </nav>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+{% endblock %}
