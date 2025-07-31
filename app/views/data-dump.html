@@ -1,0 +1,9 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Data dump" %}
+
+{% block content %}
+
+{{ data | dump | safe }}
+
+{% endblock %}
