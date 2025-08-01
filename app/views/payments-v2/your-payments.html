@@ -162,6 +162,7 @@
               </tr>
             </thead>
             <tbody class="govuk-table__body">
+              <!--
               <tr class="govuk-table__row">
                 <td class="govuk-body-s govuk-table__cell"><a class="govuk-link" href="#">ocds-h6vhtk-05635a</a></td>
                 <td class="govuk-body-s govuk-table__cell">1</td>
@@ -189,6 +190,20 @@
                 <td class="govuk-body-s govuk-table__cell">£3,300,500.00</td>
                 <td class="govuk-body-s govuk-table__cell">24 Sept 2025</td>
               </tr>
+            -->
+
+            {% for payment in data['payments'] %}
+              <tr class="govuk-table__row">
+                <td class="govuk-body-s govuk-table__cell"><a class="govuk-link" href="#">{{payment.procurment_identifier_ocid}}</a></td>
+                <td class="govuk-body-s govuk-table__cell">{{payment.contract_number}}</td>
+                <td class="govuk-body-s govuk-table__cell">{{payment.buyer_ppon}}</td>
+                <td class="govuk-body-s govuk-table__cell">{{payment.procurement_organisation_ppon}}</td>
+                <td class="govuk-body-s govuk-table__cell">{{payment.supplier_ppon}}</td>
+                <td class="govuk-body-s govuk-table__cell">{{payment.amount}}</td>
+                <td class="govuk-body-s govuk-table__cell">{{payment.payment_date}}</td>
+              </tr>
+            {% endfor %}
+        
             </tbody>
           </table>
 
